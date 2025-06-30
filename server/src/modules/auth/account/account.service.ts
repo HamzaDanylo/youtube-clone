@@ -1,7 +1,7 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { PrismaService } from '../../../core/prisma/prisma.service'
 import { CreateUserInput } from './inputs/create-user.input';
-import { hash } from 'crypto';
+import { hash } from 'argon2';
 
 @Injectable()
 export class AccountService {
@@ -34,7 +34,7 @@ export class AccountService {
             data: {
                 username,
                 email,
-                password: await hash('sha-512',password),
+                password: await hash(password),
                 displayName: username
             }
         })
