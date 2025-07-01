@@ -58,7 +58,7 @@ export class SessionService {
                     )
                 }
                 
-                req.res?.clearCookie(this.configService.getOrThrow<string>('SESSION_NAME '))
+                req.res?.clearCookie(this.configService.getOrThrow<string>('SESSION_NAME'))
                 resolve(true)
             })
         })

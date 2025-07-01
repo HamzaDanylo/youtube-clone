@@ -1,0 +1,28 @@
+import { PrismaService } from "@/src/core/prisma/prisma.service";
+import { type CanActivate, type ExecutionContext, Injectable, UnauthorizedException } from "@nestjs/common";
+import { GqlExecutionContext } from "@nestjs/graphql";
+
+//Це спеціальний клас, який вирішує, чи дозволити користувачеві доступ до маршруту. Він спрацьовує до обробника маршруту.
+@Injectable()
+export class GqlAuthGuards implements CanActivate{
+    public constructor(private readonly prismaService: PrismaService){}
+    
+    public async canActivate(context: ExecutionContext): Promise<boolean> {
+        const ctx = GqlExecutionContext.create(context);
+        const request = ctx.getContext().req;
+
+        if(typeof request.session.userId === undefined){
+            throw new UnauthorizedException('Користувач не авторизован')
+        }
+
+        const user = await this.prismaService.user.findUnique({
+            where: {
+                id: request.session.userId
+            }
+        })
+
+        request.user = user;
+
+        return true;
+    }
+}
