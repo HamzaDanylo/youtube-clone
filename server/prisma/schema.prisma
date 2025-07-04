@@ -19,6 +19,12 @@ model User {
   avatar String?
   bio    String?
 
+  isTotpEnabled Boolean @default(false) @map("is_totp_enabled")
+  totpSecret    String? @map("totp_secret")
+
+  isDeactivated   Boolean  @default(false) @map("is_deactivated")
+  deactivatedAt   DateTime? @map("deactivated_at") 
+
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 

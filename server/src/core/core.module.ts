@@ -8,6 +8,8 @@ import { getGrapgQLConfig } from './config/graphql.config';
 import { RedisModule } from './redis/redis.module';
 import { AccountModule } from '../modules/auth/account/account.module';
 import { SessionModule } from '../modules/auth/session/session.module';
+import { TotpModule } from '../modules/auth/totp/totp.module';
+import { DeactivateModule } from '../modules/auth/deactivate/deactivate.module';
 
 @Module({
   imports: [
@@ -24,7 +26,9 @@ import { SessionModule } from '../modules/auth/session/session.module';
   PrismaModule,
   RedisModule,
   AccountModule,
-  SessionModule
+  SessionModule,
+  TotpModule,
+  DeactivateModule,
   ],
 
 })

@@ -5,6 +5,7 @@ import {
     IsString, 
     MinLength,
     Matches,
+    Length,
 } from "class-validator";
 
 @InputType()
@@ -19,4 +20,10 @@ export class LoginInput{
     @IsNotEmpty()
     @MinLength(8)
     public password: string
+
+    @Field(() => String,{nullable:true})
+    @IsString()
+    @IsNotEmpty()
+    @Length(6, 6)
+    public pin?: string
 }

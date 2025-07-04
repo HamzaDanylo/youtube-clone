@@ -1,5 +1,5 @@
 import 'express-session' 
-import { type SessionMetadata } from './session-matadata.types'
+import { type SessionMetadata } from './session-metadata.types'
 
 declare module 'express-session' {
     interface SessionData { 

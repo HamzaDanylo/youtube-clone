@@ -2,6 +2,11 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type AuthModel {
+  message: String
+  user: UserModel
+}
+
 input CreateUserInput {
   email: String!
   password: String!
@@ -13,10 +18,20 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+input DeactivateInput {
+  password: String!
+  pin: String!
+}
+
 type DeviceModel {
   browser: String!
   os: String!
   type: String!
+}
+
+input EnableTotpInput {
+  pin: String!
+  secret: String!
 }
 
 type LocationModel {
@@ -29,12 +44,16 @@ type LocationModel {
 input LoginInput {
   login: String!
   password: String!
+  pin: String
 }
 
 type Mutation {
   CreateUser(data: CreateUserInput!): Boolean!
   clearSessionCookie: Boolean!
-  login(data: LoginInput!): UserModel!
+  deactivate_account(data: DeactivateInput!): Boolean!
+  disable_totp: Boolean!
+  enable_totp(data: EnableTotpInput!): Boolean!
+  login(data: LoginInput!): AuthModel!
   logout: Boolean!
   removeSessionCookie(id: String!): Boolean!
 }
@@ -43,6 +62,7 @@ type Query {
   findCurrentSessionByUser: SessionModel!
   findProfile: UserModel!
   findSessionByUser: [SessionModel!]!
+  generate_TOTP: TotpModel!
 }
 
 type SessionMetadataModel {
@@ -58,14 +78,23 @@ type SessionModel {
   userId: String!
 }
 
+type TotpModel {
+  qrcodeUrl: String!
+  secret: String!
+}
+
 type UserModel {
   avatar: String
   bio: String
   createdAt: DateTime!
+  deactivatedAt: DateTime
   displayName: String!
   email: String!
   id: ID!
+  isDeactivated: Boolean!
+  isTotpEnabled: Boolean!
   password: String!
+  totpSecret: String!
   updatedAt: DateTime!
   username: String!
 }

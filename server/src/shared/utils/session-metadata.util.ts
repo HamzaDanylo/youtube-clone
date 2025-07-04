@@ -1,5 +1,5 @@
 import type { Request } from "express";
-import type { SessionMetadata } from "../types/session-matadata.types";
+import type { SessionMetadata } from "../types/session-metadata.types";
 import { IS_DEV_ENV } from "./is-dev.util";
 import DeviceDetector = require('device-detector-js');
 import * as countries from 'i18n-iso-countries';

@@ -42,6 +42,7 @@ export class AccountService {
                 displayName: username
             }
         })
+        
         return true;
     }
 

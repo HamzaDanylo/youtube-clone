@@ -1,4 +1,4 @@
-import { ConflictException, Injectable, InternalServerErrorException, NotFoundException, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, ConflictException, Injectable, InternalServerErrorException, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { PrismaService } from '@/src/core/prisma/prisma.service';
 
 import { LoginInput } from './inputs/login.input';
@@ -8,6 +8,8 @@ import { ConfigService } from '@nestjs/config';
 import { getSessionMetadata } from '@/src/shared/utils/session-metadata.util';
 import { RedisService } from '@/src/core/redis/redis.service';
 import session from 'express-session';
+import { TOTP } from 'otpauth';
+import { destroySession, saveSession } from '@/src/shared/utils/session.util';
 
 @Injectable()
 export class SessionService {
@@ -100,7 +102,7 @@ export class SessionService {
     }
 
     public async login(req: Request,input: LoginInput,userAgent: string){
-        const { login, password } = input;
+        const { login, password, pin} = input;
 
         const user = await this.prismaService.user.findFirst({
             where: {
@@ -121,38 +123,36 @@ export class SessionService {
             throw new UnauthorizedException('Неправильний пароль пароль')
 
         const metadata = getSessionMetadata(req,userAgent)
+        if (user.isTotpEnabled) {
+            if (!pin) {
+                return {
+                    message: 'Потрібно ввести пін'
+                }
+            }
+
+            if (!user.totpSecret) {
+                throw new BadRequestException('TOTP не налаштований для користувача')
+            }
+
+            const totp = new TOTP({
+                issuer: 'Danya',
+                digits: 6,
+                label: `${user.email}`,
+                algorithm: "SHA1",
+                secret: user.totpSecret
+            }) 
+
+            const delta = totp.validate({ token: pin }) 
+
+            if (delta === null) {
+                throw new BadRequestException('Невірний код')
+            }
+        }
 
         // Зберігаємо сессію
-        return new Promise((resolve, reject) => {
-            req.session.createdAt = new Date();
-            req.session.userId = user.id;
-            req.session.metadata = metadata;
-            // console.log('Saving metadata:', metadata)
-            req.session.save(err => {
-                if(err){
-                    return reject(
-                        new InternalServerErrorException('Не вдалось зберегти сессію')
-                    )
-                }
-                
-                resolve(user)
-            })
-        })
-
+        return saveSession(req,user,metadata) 
     }
     public async logout(req: Request){
-        return new Promise((resolve, reject) => {
-            req.session.destroy(err => {
-                if(err){
-                    return reject(
-                        new InternalServerErrorException('Не вдалось завершити сессію')
-                    )
-                }
-                
-                req.res?.clearCookie(this.configService.getOrThrow<string>('SESSION_NAME'))
-                resolve(true)
-            })
-        })
-
+        return destroySession(req, this.configService)
     }
 }
