@@ -32,8 +32,8 @@ export function saveSession(
 
 export async function destroySession(req: Request, configService: ConfigService) {
 	return await new Promise((resolve, reject) => {
-		console.log('Session object:', req.session);
-		console.log('Destroy function:', typeof req.session?.destroy);
+		// console.log('Session object:', req.session);
+		// console.log('Destroy function:', typeof req.session?.destroy);
 
 		req.session.destroy(err => {
 			if (err) {

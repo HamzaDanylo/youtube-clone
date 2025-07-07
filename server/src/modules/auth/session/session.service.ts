@@ -148,9 +148,8 @@ export class SessionService {
                 throw new BadRequestException('Невірний код')
             }
         }
-
         // Зберігаємо сессію
-        return saveSession(req,user,metadata) 
+        return saveSession(req,user,metadata)
     }
     public async logout(req: Request){
         return destroySession(req, this.configService)
