@@ -11,6 +11,8 @@ import { SessionModule } from '../modules/auth/session/session.module';
 import { TotpModule } from '../modules/auth/totp/totp.module';
 import { DeactivateModule } from '../modules/auth/deactivate/deactivate.module';
 import { CronModule } from '../modules/cron/cron.module';
+import { StorageModule } from '../modules/libs/storage/storage.module';
+import { ProfileModule } from '../modules/auth/profile/profile.module';
 
 @Module({
   imports: [
@@ -31,6 +33,8 @@ import { CronModule } from '../modules/cron/cron.module';
   TotpModule,
   DeactivateModule,
   CronModule,
+  StorageModule,
+  ProfileModule,
   ],
 
 })
