@@ -5,6 +5,7 @@ import { User } from '@/prisma/generated';
 import * as Upload from 'graphql-upload/Upload.js';
 import * as sharp from 'sharp'
 import { ChangeProfileInput } from './inputs/change-profile-info.input';
+import { SocialLinkInput } from './inputs/social-link.input';
 
 @Injectable()
 export class ProfileService {
@@ -88,5 +89,70 @@ export class ProfileService {
             }
         })
         return true;
+    }
+
+    public async createSocialLink(user: User, input: SocialLinkInput){
+        const { title, url } = input
+
+		const lastSocialLink = await this.prismaService.socialLink.findFirst({
+			where: {
+				userId: user.id
+			},
+			orderBy: {
+				position: 'desc'
+			}
+		})
+
+		const newPosition = lastSocialLink ? lastSocialLink.position + 1 : 1
+
+        await this.prismaService.socialLink.create({
+			data: {
+				title,
+				url,
+				position: newPosition,
+				user: {
+					connect: {
+						id: user.id
+					}
+				}
+			}
+		})
+        return true
+    }
+
+    public async findSocialLinks(user: User){
+        const socialLinks = await this.prismaService.socialLink.findMany({
+            where: {
+                id: user.id
+            },
+            orderBy: {
+                position: 'asc'
+            }
+        })
+        return socialLinks
+    }
+
+    public async updateSocialLink(id: string, input: SocialLinkInput){
+        const { title, url} = input;
+
+        await this.prismaService.socialLink.update({
+            where: {
+                id
+            },
+            data:{
+                title,
+                url
+            }
+        })
+        return true
+    }
+
+    public async removeSocialLink(id: string){
+        await this.prismaService.socialLink.delete({
+            where: { 
+                id
+            }
+        })
+        return true
     }
 }
