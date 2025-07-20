@@ -19,6 +19,7 @@ export class ChangeProfileInput{
     @Field(() => String)
     @IsString()
     @IsNotEmpty()
+    // @IsOptional()
     public displayName: string
     
     @Field(() => String)

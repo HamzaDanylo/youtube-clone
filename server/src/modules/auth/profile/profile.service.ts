@@ -5,7 +5,7 @@ import { User } from '@/prisma/generated';
 import * as Upload from 'graphql-upload/Upload.js';
 import * as sharp from 'sharp'
 import { ChangeProfileInput } from './inputs/change-profile-info.input';
-import { SocialLinkInput } from './inputs/social-link.input';
+import { SocialLinkInput, SocialLinkOrderInput } from './inputs/social-link.input';
 
 @Injectable()
 export class ProfileService {
@@ -123,7 +123,7 @@ export class ProfileService {
     public async findSocialLinks(user: User){
         const socialLinks = await this.prismaService.socialLink.findMany({
             where: {
-                id: user.id
+                userId: user.id
             },
             orderBy: {
                 position: 'asc'
@@ -154,5 +154,24 @@ export class ProfileService {
             }
         })
         return true
+    }
+
+    public async reorderSocialLinks(list: SocialLinkOrderInput[]){
+        if(!list)
+            return
+
+        const updatePromises = list.map(socialLink => {
+            return this.prismaService.socialLink.update({
+                where: {
+                    id: socialLink.id
+                },
+                data: {
+                    position: socialLink.position
+                }
+            })
+        })
+        await Promise.all(updatePromises)
+
+        return true;
     }
 }

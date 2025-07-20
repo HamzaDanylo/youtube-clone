@@ -1,4 +1,4 @@
-import { Args, Mutation, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { ProfileService } from './profile.service';
 import * as Upload from 'graphql-upload/Upload.js';
 import * as GraphQLUpload from 'graphql-upload/GraphQLUpload.js';
@@ -7,6 +7,8 @@ import { type User } from '@/prisma/generated';
 import { Authorization } from '@/src/shared/decorators/auth.decorator';
 import { FileValidationPipe } from '@/src/shared/pipes/file-validation.pipe';
 import { ChangeProfileInput } from './inputs/change-profile-info.input';
+import { SocialLinkInput, SocialLinkOrderInput } from './inputs/social-link.input';
+import { SocialLinkModel } from './models/social-link.model';
 
 
 @Resolver('Profile')
@@ -38,5 +40,48 @@ export class ProfileResolver {
     @Args('data') input: ChangeProfileInput  
   ){
     return this.profileService.changeInfo(user,input)
+  }
+
+  @Authorization()
+  @Mutation(() => Boolean, { name: 'createSocialLink' })
+  public async createSocialLink(
+    @Authorized() user: User,
+    @Args('data') input: SocialLinkInput  
+  ){
+    return this.profileService.createSocialLink(user,input)
+  }
+
+  @Authorization()
+  @Query(() => [SocialLinkModel], { name: 'findSocialLinks' })
+  public async findSocialLinks(
+    @Authorized() user: User
+  ){
+    return this.profileService.findSocialLinks(user)
+  }
+
+  @Authorization()
+  @Mutation(() => Boolean, { name: 'reorderSociaLinks' })
+  public async reorderSociaLinks(
+    @Authorized() user: User,
+    @Args('list', { type: () => [SocialLinkOrderInput] }) list: SocialLinkOrderInput[]  
+  ){
+    return this.profileService.reorderSocialLinks(list)
+  }
+
+  @Authorization()
+  @Mutation(() => Boolean, { name: 'updateSocialLinks' })
+  public async updateSocialLinks(
+    @Args('id') id: string,
+    @Args('data') input: SocialLinkInput
+  ){
+    return this.profileService.updateSocialLink(id, input)
+  }
+
+  @Authorization()
+  @Mutation(() => Boolean, { name: 'removeSocialLink' })
+  public async removeSocialLink(
+    @Args('id') id: string,
+  ){
+    return this.profileService.removeSocialLink(id)
   }
 }

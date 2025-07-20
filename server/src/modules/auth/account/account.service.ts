@@ -1,10 +1,11 @@
-import { ConflictException, Injectable, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, ConflictException, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { PrismaService } from '../../../core/prisma/prisma.service'
 import { CreateUserInput } from './inputs/create-user.input';
 import { hash, verify } from 'argon2';
 import { ChangeeEmailInput } from './inputs/change-email-input';
 import { User } from '@/prisma/generated';
 import { ChangePasswordInput } from './inputs/change-password-input';
+import { TOTP } from 'otpauth';
 
 @Injectable()
 export class AccountService {
@@ -15,6 +16,9 @@ export class AccountService {
         const user = await this.prismaService.user.findUnique({
             where:{
                 id: id
+            },
+            include:{ 
+                socialLinks: true
             }
         })
         return user;
@@ -64,23 +68,49 @@ export class AccountService {
     }
     
     public async changePassword(user: User, input: ChangePasswordInput){
-        const { oldPassword, newPassword } = input;
+        const { oldPassword, newPassword, pin } = input;
 
         const isValid = await verify(user.password, oldPassword) 
-
+        
         if(!isValid){
             throw new UnauthorizedException('Невірний старий пароль')
         }
+        if (!user.isTotpEnabled) {
+        throw new NotFoundException('Для зміни паролю вам потрібно активувати 2-фа аутентифікацію');
+    }
 
+    if (!pin) {
+        throw new BadRequestException('Потрібно ввести пін-код для підтвердження');
+    }
 
-        await this.prismaService.user.update({
-            where: {
-                id: user.id
-            },
-            data: {
-                password: await hash(newPassword)
-            }
-        }) 
-        return true 
+    if (!user.totpSecret) {
+        throw new BadRequestException('TOTP не налаштований для користувача');
+    }
+
+    const totp = new TOTP({
+        issuer: 'Danya',
+        digits: 6,
+        label: `${user.email}`,
+        algorithm: 'SHA1',
+        secret: user.totpSecret,
+    });
+
+    const delta = totp.validate({ token: pin });
+    if (delta === null) {
+        throw new BadRequestException('Невірний код');
+    }
+        
+    await this.prismaService.user.update({
+        where: {
+            id: user.id
+        },
+        data: {
+            password: await hash(newPassword)
+        }
+    }) 
+    return true
+        
+
+        
     } 
 }

@@ -7,11 +7,12 @@ import { ConfigService } from '@nestjs/config';
 import { SessionService } from '../session/session.service';
 import { destroySession } from '@/src/shared/utils/session.util';
 import { verify } from 'argon2';
+import { TotpService } from '../totp/totp.service';
 
 
 @Injectable()
 export class DeactivateService {
-    public constructor(private readonly prismaService: PrismaService,private readonly configService: ConfigService){}
+public constructor(private readonly prismaService: PrismaService,private readonly configService: ConfigService){}
     
     public async deactivateAccount(req: Request, input: DeactivateInput) {
     const { password, pin } = input;

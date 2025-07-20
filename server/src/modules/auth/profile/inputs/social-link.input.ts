@@ -1,5 +1,5 @@
 import { Field, InputType } from "@nestjs/graphql";
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsNotEmpty, IsNumber, IsString } from "class-validator";
 
 @InputType()
 export class SocialLinkInput {
@@ -12,5 +12,18 @@ export class SocialLinkInput {
     @IsString()
     @IsNotEmpty()
     public url: string
+    
+}
+@InputType()
+export class SocialLinkOrderInput {
+    @Field(() => String)
+    @IsString()
+    @IsNotEmpty()
+    public id: string
+
+    @Field(() => Number)
+    @IsNumber()
+    @IsNotEmpty()
+    public position: number
     
 }
