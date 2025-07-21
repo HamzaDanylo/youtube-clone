@@ -146,6 +146,19 @@ exports.Prisma.UserScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.StreamScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  thumbnaliUrl: 'thumbnaliUrl',
+  ingressId: 'ingressId',
+  serverUrl: 'serverUrl',
+  streamKey: 'streamKey',
+  isLive: 'isLive',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -164,7 +177,8 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   SocialLink: 'SocialLink',
-  User: 'User'
+  User: 'User',
+  Stream: 'Stream'
 };
 
 /**

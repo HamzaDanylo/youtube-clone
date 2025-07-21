@@ -19,6 +19,11 @@ input ChangeProfileInput {
   username: String!
 }
 
+input ChangeStreamInfoInput {
+  categoryId: String!
+  title: String!
+}
+
 input ChangeeEmailInput {
   email: String!
 }
@@ -50,6 +55,12 @@ input EnableTotpInput {
   secret: String!
 }
 
+input FiltersInput {
+  searchTerm: String
+  skip: Float
+  take: Float
+}
+
 type LocationModel {
   city: String!
   country: String!
@@ -69,6 +80,7 @@ type Mutation {
   CreateUser(data: CreateUserInput!): Boolean!
   changeInfo(data: ChangeProfileInput!): Boolean!
   changeProfileAvatar(avatar: Upload!): Boolean!
+  changeStreamInfo(data: ChangeStreamInfoInput!): Boolean!
   clearSessionCookie: Boolean!
   createSocialLink(data: SocialLinkInput!): Boolean!
   deactivate_account(data: DeactivateInput!): Boolean!
@@ -84,8 +96,10 @@ type Mutation {
 }
 
 type Query {
+  findAllStreams(filters: FiltersInput!): [StreamModel!]!
   findCurrentSessionByUser: SessionModel!
   findProfile: UserModel!
+  findRandomStreams: [StreamModel!]!
   findSessionByUser: [SessionModel!]!
   findSocialLinks: [SocialLinkModel!]!
   generate_TOTP: TotpModel!
@@ -124,6 +138,20 @@ input SocialLinkOrderInput {
   position: Float!
 }
 
+type StreamModel {
+  createdAt: DateTime!
+  id: ID!
+  ingressId: String
+  isLive: Boolean!
+  serverUrl: String
+  streamKey: String
+  thumbnaliUrl: String
+  title: String!
+  updatedAt: DateTime!
+  user: UserModel!
+  userId: String!
+}
+
 type TotpModel {
   qrcodeUrl: String!
   secret: String!
@@ -144,6 +172,7 @@ type UserModel {
   isTotpEnabled: Boolean!
   password: String!
   socialLinks: [SocialLinkModel!]!
+  stream: StreamModel!
   totpSecret: String!
   updatedAt: DateTime!
   username: String!
