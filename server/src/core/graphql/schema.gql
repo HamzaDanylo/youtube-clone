@@ -76,8 +76,11 @@ input LoginInput {
 
 type Mutation {
   ChangeEmail(data: ChangeeEmailInput!): Boolean!
+  ChangeStreamThumbnail(thumbanail: Upload!): Boolean!
+  CreateIngress(ingressType: Float!): Boolean!
   CreatePassword(data: ChangePasswordInput!): Boolean!
   CreateUser(data: CreateUserInput!): Boolean!
+  RemoveStreamThumbnail: Boolean!
   changeInfo(data: ChangeProfileInput!): Boolean!
   changeProfileAvatar(avatar: Upload!): Boolean!
   changeStreamInfo(data: ChangeStreamInfoInput!): Boolean!

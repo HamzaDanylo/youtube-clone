@@ -16,6 +16,8 @@ import { ProfileModule } from '../modules/auth/profile/profile.module';
 import { StreamModule } from '../modules/stream/stream.module';
 import { LivekitModule } from '../modules/libs/livekit/livekit.module';
 import { getLiveKitConfig } from './config/livekit.config';
+import { IngressModule } from '../modules/stream/ingress/ingress.module';
+import { WebhookModule } from '../modules/webhook/webhook.module';
 
 @Module({
   imports: [
@@ -44,6 +46,9 @@ import { getLiveKitConfig } from './config/livekit.config';
   StorageModule,
   ProfileModule,
   StreamModule,
+  IngressModule,
+  WebhookModule,
+
   ],
 
 })

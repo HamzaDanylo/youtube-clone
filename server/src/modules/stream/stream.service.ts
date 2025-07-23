@@ -7,12 +7,16 @@ import * as Upload from 'graphql-upload/Upload.js';
 import * as sharp from 'sharp'
 import { StorageService } from '../libs/storage/storage.service';
 import { StreamModel } from './models/stream.model';
+import { GenerateStreamInput } from './inputs/generate-stream-token.input';
+import { AccessToken } from 'livekit-server-sdk';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class StreamService {
     public constructor(
         private readonly prismaService: PrismaService,
-        private readonly storageService: StorageService
+        private readonly storageService: StorageService,
+        private readonly configService: ConfigService
     ){}
 
     public async changeThumbanail(user: User, file: Upload){
@@ -158,6 +162,59 @@ public async findRandom() {
         })
         return true
     }
+
+    public async genStreamToken(input: GenerateStreamInput){
+        const { userId, channelId } = input; 
+     
+        let self: { id: string; username: string }
+        
+        const user = await this.prismaService.user.findUnique({
+            where: {
+                id: userId
+            }
+        })
+    
+        if(user){
+            self = {
+                id: user.id,
+                username: user.username
+            }
+        }else{
+            self = {
+                id: userId,
+                username: `Danya ${Math.floor(Math.random() * 100000)}`
+            }
+        }
+
+        const channel = await this.prismaService.user.findUnique({
+            where: {
+                id: channelId
+            }
+        })
+
+        if(!channel)
+            throw new BadRequestException('Канал не знайдений')
+
+        const isHost = self.id === channel.id 
+        
+        const token = new AccessToken(
+            this.configService.getOrThrow<string>('LIVEKIT_API_KEY'),
+            this.configService.getOrThrow<string>('LIVEKIT_API_SECRET'),
+            {
+                identity: isHost ? `Host-${self.id}` : self.id.toString(),
+                name: self.username
+            }
+        )
+
+        token.addGrant({
+            room: channel.id,
+            roomJoin: true,
+            canPublish: false,  
+        })
+
+        return { token: token.toJwt()}
+    }
+
 
     private findBySearchTerm(searchTerm: string): Prisma.StreamWhereInput{
         return {
