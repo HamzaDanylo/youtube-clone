@@ -43,6 +43,7 @@
     "graphql": "^16.11.0",
     "graphql-upload": "^14.0.0",
     "hi-base32": "^0.5.1",
+    "livekit-server-sdk": "^1.2.7",
     "otpauth": "^9.4.0",
     "qrcode": "^1.5.4",
     "redis": "^5.5.6",
