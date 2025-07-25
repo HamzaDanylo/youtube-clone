@@ -9,6 +9,8 @@ import * as GraphQLUpload from 'graphql-upload/GraphQLUpload.js';
 import { User } from '@/prisma/generated';
 import { FileValidationPipe } from '@/src/shared/pipes/file-validation.pipe';
 import { Authorization } from '@/src/shared/decorators/auth.decorator';
+import { GenerateTokenModel } from './models/generate-token.model';
+import { GenerateStreamInput } from './inputs/generate-stream-token.input';
 
 @Resolver('Stream')
 export class StreamResolver {
@@ -51,5 +53,13 @@ export class StreamResolver {
     @Authorized() user: User,   
   ){
     return this.streamService.removeThumbnail(user)
+  }
+
+  @Authorization()
+  @Mutation(() => GenerateTokenModel, { name: 'GenerateStreamToken' })
+  public async generateToken(
+    @Args('data') input: GenerateStreamInput
+  ){
+    return this.streamService.generateToken(input)
   }
 }

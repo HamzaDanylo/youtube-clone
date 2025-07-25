@@ -61,6 +61,15 @@ input FiltersInput {
   take: Float
 }
 
+input GenerateStreamInput {
+  channelId: String!
+  userId: String!
+}
+
+type GenerateTokenModel {
+  title: String!
+}
+
 type LocationModel {
   city: String!
   country: String!
@@ -80,6 +89,7 @@ type Mutation {
   CreateIngress(ingressType: Float!): Boolean!
   CreatePassword(data: ChangePasswordInput!): Boolean!
   CreateUser(data: CreateUserInput!): Boolean!
+  GenerateStreamToken(data: GenerateStreamInput!): GenerateTokenModel!
   RemoveStreamThumbnail: Boolean!
   changeInfo(data: ChangeProfileInput!): Boolean!
   changeProfileAvatar(avatar: Upload!): Boolean!

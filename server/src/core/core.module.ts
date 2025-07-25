@@ -18,6 +18,7 @@ import { LivekitModule } from '../modules/libs/livekit/livekit.module';
 import { getLiveKitConfig } from './config/livekit.config';
 import { IngressModule } from '../modules/stream/ingress/ingress.module';
 import { WebhookModule } from '../modules/webhook/webhook.module';
+import { CategoryModule } from '../modules/category/category.module';
 
 @Module({
   imports: [
@@ -48,7 +49,8 @@ import { WebhookModule } from '../modules/webhook/webhook.module';
   StreamModule,
   IngressModule,
   WebhookModule,
-
+  CategoryModule,
+  
   ],
 
 })

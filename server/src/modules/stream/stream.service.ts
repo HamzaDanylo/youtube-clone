@@ -157,13 +157,18 @@ public async findRandom() {
                 userId: user.id
             },
             data: {
-                title
+                title,
+                category: {
+                    connect: {
+                        id: categoryId
+                    }
+                }
             }
         })
         return true
     }
 
-    public async genStreamToken(input: GenerateStreamInput){
+    public async generateToken(input: GenerateStreamInput){
         const { userId, channelId } = input; 
      
         let self: { id: string; username: string }
