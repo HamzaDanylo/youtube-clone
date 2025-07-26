@@ -22,8 +22,8 @@ export class StreamService {
     public async changeThumbanail(user: User, file: Upload){
         const stream = await this.findByUserId(user)
         
-        if(stream.thumbnaliUrl){
-            await this.storageService.remove(stream.thumbnaliUrl)
+        if(stream.thumbnailUrl){
+            await this.storageService.remove(stream.thumbnailUrl)
         }
         const chunks: Buffer[] = [];
 
@@ -48,7 +48,7 @@ export class StreamService {
                 userId: user.id
             },
             data: {
-                thumbnaliUrl: fileName
+                thumbnailUrl: fileName
             }
         })
         return true
@@ -57,17 +57,17 @@ export class StreamService {
     public async removeThumbnail(user: User){
         const stream = await this.findByUserId(user)
 
-        if(!stream.thumbnaliUrl){
+        if(!stream.thumbnailUrl){
             return
         }
 
-        await this.storageService.remove(stream.thumbnaliUrl)
+        await this.storageService.remove(stream.thumbnailUrl)
         await this.prismaService.stream.update({
             where: { 
                 userId: user.id
             },
             data: {
-                thumbnaliUrl: null
+                thumbnailUrl: null
             }
         })
         return true

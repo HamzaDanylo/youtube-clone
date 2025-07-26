@@ -3550,13 +3550,13 @@ export namespace Prisma {
   export type StreamMinAggregateOutputType = {
     id: string | null
     title: string | null
-    thumbnaliUrl: string | null
+    thumbnailUrl: string | null
     ingressId: string | null
     serverUrl: string | null
     streamKey: string | null
     isLive: boolean | null
-    userId: string | null
     categoryId: string | null
+    userId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3564,13 +3564,13 @@ export namespace Prisma {
   export type StreamMaxAggregateOutputType = {
     id: string | null
     title: string | null
-    thumbnaliUrl: string | null
+    thumbnailUrl: string | null
     ingressId: string | null
     serverUrl: string | null
     streamKey: string | null
     isLive: boolean | null
-    userId: string | null
     categoryId: string | null
+    userId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3578,13 +3578,13 @@ export namespace Prisma {
   export type StreamCountAggregateOutputType = {
     id: number
     title: number
-    thumbnaliUrl: number
+    thumbnailUrl: number
     ingressId: number
     serverUrl: number
     streamKey: number
     isLive: number
-    userId: number
     categoryId: number
+    userId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -3594,13 +3594,13 @@ export namespace Prisma {
   export type StreamMinAggregateInputType = {
     id?: true
     title?: true
-    thumbnaliUrl?: true
+    thumbnailUrl?: true
     ingressId?: true
     serverUrl?: true
     streamKey?: true
     isLive?: true
-    userId?: true
     categoryId?: true
+    userId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3608,13 +3608,13 @@ export namespace Prisma {
   export type StreamMaxAggregateInputType = {
     id?: true
     title?: true
-    thumbnaliUrl?: true
+    thumbnailUrl?: true
     ingressId?: true
     serverUrl?: true
     streamKey?: true
     isLive?: true
-    userId?: true
     categoryId?: true
+    userId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3622,13 +3622,13 @@ export namespace Prisma {
   export type StreamCountAggregateInputType = {
     id?: true
     title?: true
-    thumbnaliUrl?: true
+    thumbnailUrl?: true
     ingressId?: true
     serverUrl?: true
     streamKey?: true
     isLive?: true
-    userId?: true
     categoryId?: true
+    userId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -3709,13 +3709,13 @@ export namespace Prisma {
   export type StreamGroupByOutputType = {
     id: string
     title: string
-    thumbnaliUrl: string | null
+    thumbnailUrl: string | null
     ingressId: string | null
     serverUrl: string | null
     streamKey: string | null
     isLive: boolean
-    userId: string
     categoryId: string
+    userId: string
     createdAt: Date
     updatedAt: Date
     _count: StreamCountAggregateOutputType | null
@@ -3740,95 +3740,95 @@ export namespace Prisma {
   export type StreamSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
-    thumbnaliUrl?: boolean
+    thumbnailUrl?: boolean
     ingressId?: boolean
     serverUrl?: boolean
     streamKey?: boolean
     isLive?: boolean
-    userId?: boolean
     categoryId?: boolean
+    userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    user?: boolean | Stream$userArgs<ExtArgs>
     category?: boolean | CategoryDefaultArgs<ExtArgs>
+    user?: boolean | Stream$userArgs<ExtArgs>
   }, ExtArgs["result"]["stream"]>
 
   export type StreamSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
-    thumbnaliUrl?: boolean
+    thumbnailUrl?: boolean
     ingressId?: boolean
     serverUrl?: boolean
     streamKey?: boolean
     isLive?: boolean
-    userId?: boolean
     categoryId?: boolean
+    userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    user?: boolean | Stream$userArgs<ExtArgs>
     category?: boolean | CategoryDefaultArgs<ExtArgs>
+    user?: boolean | Stream$userArgs<ExtArgs>
   }, ExtArgs["result"]["stream"]>
 
   export type StreamSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
-    thumbnaliUrl?: boolean
+    thumbnailUrl?: boolean
     ingressId?: boolean
     serverUrl?: boolean
     streamKey?: boolean
     isLive?: boolean
-    userId?: boolean
     categoryId?: boolean
+    userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    user?: boolean | Stream$userArgs<ExtArgs>
     category?: boolean | CategoryDefaultArgs<ExtArgs>
+    user?: boolean | Stream$userArgs<ExtArgs>
   }, ExtArgs["result"]["stream"]>
 
   export type StreamSelectScalar = {
     id?: boolean
     title?: boolean
-    thumbnaliUrl?: boolean
+    thumbnailUrl?: boolean
     ingressId?: boolean
     serverUrl?: boolean
     streamKey?: boolean
     isLive?: boolean
-    userId?: boolean
     categoryId?: boolean
+    userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type StreamOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "thumbnaliUrl" | "ingressId" | "serverUrl" | "streamKey" | "isLive" | "userId" | "categoryId" | "createdAt" | "updatedAt", ExtArgs["result"]["stream"]>
+  export type StreamOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "thumbnailUrl" | "ingressId" | "serverUrl" | "streamKey" | "isLive" | "categoryId" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["stream"]>
   export type StreamInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | Stream$userArgs<ExtArgs>
     category?: boolean | CategoryDefaultArgs<ExtArgs>
+    user?: boolean | Stream$userArgs<ExtArgs>
   }
   export type StreamIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | Stream$userArgs<ExtArgs>
     category?: boolean | CategoryDefaultArgs<ExtArgs>
+    user?: boolean | Stream$userArgs<ExtArgs>
   }
   export type StreamIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | Stream$userArgs<ExtArgs>
     category?: boolean | CategoryDefaultArgs<ExtArgs>
+    user?: boolean | Stream$userArgs<ExtArgs>
   }
 
   export type $StreamPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Stream"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs> | null
       category: Prisma.$CategoryPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       title: string
-      thumbnaliUrl: string | null
+      thumbnailUrl: string | null
       ingressId: string | null
       serverUrl: string | null
       streamKey: string | null
       isLive: boolean
-      userId: string
       categoryId: string
+      userId: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["stream"]>
@@ -4225,8 +4225,8 @@ export namespace Prisma {
    */
   export interface Prisma__StreamClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends Stream$userArgs<ExtArgs> = {}>(args?: Subset<T, Stream$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     category<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends Stream$userArgs<ExtArgs> = {}>(args?: Subset<T, Stream$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4258,13 +4258,13 @@ export namespace Prisma {
   interface StreamFieldRefs {
     readonly id: FieldRef<"Stream", 'String'>
     readonly title: FieldRef<"Stream", 'String'>
-    readonly thumbnaliUrl: FieldRef<"Stream", 'String'>
+    readonly thumbnailUrl: FieldRef<"Stream", 'String'>
     readonly ingressId: FieldRef<"Stream", 'String'>
     readonly serverUrl: FieldRef<"Stream", 'String'>
     readonly streamKey: FieldRef<"Stream", 'String'>
     readonly isLive: FieldRef<"Stream", 'Boolean'>
-    readonly userId: FieldRef<"Stream", 'String'>
     readonly categoryId: FieldRef<"Stream", 'String'>
+    readonly userId: FieldRef<"Stream", 'String'>
     readonly createdAt: FieldRef<"Stream", 'DateTime'>
     readonly updatedAt: FieldRef<"Stream", 'DateTime'>
   }
@@ -5845,13 +5845,13 @@ export namespace Prisma {
   export const StreamScalarFieldEnum: {
     id: 'id',
     title: 'title',
-    thumbnaliUrl: 'thumbnaliUrl',
+    thumbnailUrl: 'thumbnailUrl',
     ingressId: 'ingressId',
     serverUrl: 'serverUrl',
     streamKey: 'streamKey',
     isLive: 'isLive',
-    userId: 'userId',
     categoryId: 'categoryId',
+    userId: 'userId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -6138,64 +6138,64 @@ export namespace Prisma {
     NOT?: StreamWhereInput | StreamWhereInput[]
     id?: StringFilter<"Stream"> | string
     title?: StringFilter<"Stream"> | string
-    thumbnaliUrl?: StringNullableFilter<"Stream"> | string | null
+    thumbnailUrl?: StringNullableFilter<"Stream"> | string | null
     ingressId?: StringNullableFilter<"Stream"> | string | null
     serverUrl?: StringNullableFilter<"Stream"> | string | null
     streamKey?: StringNullableFilter<"Stream"> | string | null
     isLive?: BoolFilter<"Stream"> | boolean
-    userId?: StringFilter<"Stream"> | string
     categoryId?: StringFilter<"Stream"> | string
+    userId?: StringFilter<"Stream"> | string
     createdAt?: DateTimeFilter<"Stream"> | Date | string
     updatedAt?: DateTimeFilter<"Stream"> | Date | string
-    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
 
   export type StreamOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
-    thumbnaliUrl?: SortOrderInput | SortOrder
+    thumbnailUrl?: SortOrderInput | SortOrder
     ingressId?: SortOrderInput | SortOrder
     serverUrl?: SortOrderInput | SortOrder
     streamKey?: SortOrderInput | SortOrder
     isLive?: SortOrder
-    userId?: SortOrder
     categoryId?: SortOrder
+    userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    user?: UserOrderByWithRelationInput
     category?: CategoryOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
   }
 
   export type StreamWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     ingressId?: string
     userId?: string
-    categoryId?: string
     AND?: StreamWhereInput | StreamWhereInput[]
     OR?: StreamWhereInput[]
     NOT?: StreamWhereInput | StreamWhereInput[]
     title?: StringFilter<"Stream"> | string
-    thumbnaliUrl?: StringNullableFilter<"Stream"> | string | null
+    thumbnailUrl?: StringNullableFilter<"Stream"> | string | null
     serverUrl?: StringNullableFilter<"Stream"> | string | null
     streamKey?: StringNullableFilter<"Stream"> | string | null
     isLive?: BoolFilter<"Stream"> | boolean
+    categoryId?: StringFilter<"Stream"> | string
     createdAt?: DateTimeFilter<"Stream"> | Date | string
     updatedAt?: DateTimeFilter<"Stream"> | Date | string
-    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
-  }, "id" | "ingressId" | "userId" | "categoryId">
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+  }, "id" | "ingressId" | "userId">
 
   export type StreamOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
-    thumbnaliUrl?: SortOrderInput | SortOrder
+    thumbnailUrl?: SortOrderInput | SortOrder
     ingressId?: SortOrderInput | SortOrder
     serverUrl?: SortOrderInput | SortOrder
     streamKey?: SortOrderInput | SortOrder
     isLive?: SortOrder
-    userId?: SortOrder
     categoryId?: SortOrder
+    userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: StreamCountOrderByAggregateInput
@@ -6209,13 +6209,13 @@ export namespace Prisma {
     NOT?: StreamScalarWhereWithAggregatesInput | StreamScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Stream"> | string
     title?: StringWithAggregatesFilter<"Stream"> | string
-    thumbnaliUrl?: StringNullableWithAggregatesFilter<"Stream"> | string | null
+    thumbnailUrl?: StringNullableWithAggregatesFilter<"Stream"> | string | null
     ingressId?: StringNullableWithAggregatesFilter<"Stream"> | string | null
     serverUrl?: StringNullableWithAggregatesFilter<"Stream"> | string | null
     streamKey?: StringNullableWithAggregatesFilter<"Stream"> | string | null
     isLive?: BoolWithAggregatesFilter<"Stream"> | boolean
-    userId?: StringWithAggregatesFilter<"Stream"> | string
     categoryId?: StringWithAggregatesFilter<"Stream"> | string
+    userId?: StringWithAggregatesFilter<"Stream"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Stream"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Stream"> | Date | string
   }
@@ -6477,27 +6477,27 @@ export namespace Prisma {
   export type StreamCreateInput = {
     id?: string
     title: string
-    thumbnaliUrl?: string | null
+    thumbnailUrl?: string | null
     ingressId?: string | null
     serverUrl?: string | null
     streamKey?: string | null
     isLive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    user?: UserCreateNestedOneWithoutStreamInput
     category: CategoryCreateNestedOneWithoutStreamsInput
+    user?: UserCreateNestedOneWithoutStreamInput
   }
 
   export type StreamUncheckedCreateInput = {
     id?: string
     title: string
-    thumbnaliUrl?: string | null
+    thumbnailUrl?: string | null
     ingressId?: string | null
     serverUrl?: string | null
     streamKey?: string | null
     isLive?: boolean
-    userId: string
     categoryId: string
+    userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6505,27 +6505,27 @@ export namespace Prisma {
   export type StreamUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    thumbnaliUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
     ingressId?: NullableStringFieldUpdateOperationsInput | string | null
     serverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     streamKey?: NullableStringFieldUpdateOperationsInput | string | null
     isLive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneWithoutStreamNestedInput
     category?: CategoryUpdateOneRequiredWithoutStreamsNestedInput
+    user?: UserUpdateOneWithoutStreamNestedInput
   }
 
   export type StreamUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    thumbnaliUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
     ingressId?: NullableStringFieldUpdateOperationsInput | string | null
     serverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     streamKey?: NullableStringFieldUpdateOperationsInput | string | null
     isLive?: BoolFieldUpdateOperationsInput | boolean
-    userId?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6533,13 +6533,13 @@ export namespace Prisma {
   export type StreamCreateManyInput = {
     id?: string
     title: string
-    thumbnaliUrl?: string | null
+    thumbnailUrl?: string | null
     ingressId?: string | null
     serverUrl?: string | null
     streamKey?: string | null
     isLive?: boolean
-    userId: string
     categoryId: string
+    userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6547,7 +6547,7 @@ export namespace Prisma {
   export type StreamUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    thumbnaliUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
     ingressId?: NullableStringFieldUpdateOperationsInput | string | null
     serverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     streamKey?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6559,13 +6559,13 @@ export namespace Prisma {
   export type StreamUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    thumbnaliUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
     ingressId?: NullableStringFieldUpdateOperationsInput | string | null
     serverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     streamKey?: NullableStringFieldUpdateOperationsInput | string | null
     isLive?: BoolFieldUpdateOperationsInput | boolean
-    userId?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6919,13 +6919,13 @@ export namespace Prisma {
   export type StreamCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    thumbnaliUrl?: SortOrder
+    thumbnailUrl?: SortOrder
     ingressId?: SortOrder
     serverUrl?: SortOrder
     streamKey?: SortOrder
     isLive?: SortOrder
-    userId?: SortOrder
     categoryId?: SortOrder
+    userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -6933,13 +6933,13 @@ export namespace Prisma {
   export type StreamMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    thumbnaliUrl?: SortOrder
+    thumbnailUrl?: SortOrder
     ingressId?: SortOrder
     serverUrl?: SortOrder
     streamKey?: SortOrder
     isLive?: SortOrder
-    userId?: SortOrder
     categoryId?: SortOrder
+    userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -6947,13 +6947,13 @@ export namespace Prisma {
   export type StreamMinOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    thumbnaliUrl?: SortOrder
+    thumbnailUrl?: SortOrder
     ingressId?: SortOrder
     serverUrl?: SortOrder
     streamKey?: SortOrder
     isLive?: SortOrder
-    userId?: SortOrder
     categoryId?: SortOrder
+    userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -7116,16 +7116,24 @@ export namespace Prisma {
     update?: XOR<XOR<StreamUpdateToOneWithWhereWithoutUserInput, StreamUpdateWithoutUserInput>, StreamUncheckedUpdateWithoutUserInput>
   }
 
+  export type CategoryCreateNestedOneWithoutStreamsInput = {
+    create?: XOR<CategoryCreateWithoutStreamsInput, CategoryUncheckedCreateWithoutStreamsInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutStreamsInput
+    connect?: CategoryWhereUniqueInput
+  }
+
   export type UserCreateNestedOneWithoutStreamInput = {
     create?: XOR<UserCreateWithoutStreamInput, UserUncheckedCreateWithoutStreamInput>
     connectOrCreate?: UserCreateOrConnectWithoutStreamInput
     connect?: UserWhereUniqueInput
   }
 
-  export type CategoryCreateNestedOneWithoutStreamsInput = {
+  export type CategoryUpdateOneRequiredWithoutStreamsNestedInput = {
     create?: XOR<CategoryCreateWithoutStreamsInput, CategoryUncheckedCreateWithoutStreamsInput>
     connectOrCreate?: CategoryCreateOrConnectWithoutStreamsInput
+    upsert?: CategoryUpsertWithoutStreamsInput
     connect?: CategoryWhereUniqueInput
+    update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutStreamsInput, CategoryUpdateWithoutStreamsInput>, CategoryUncheckedUpdateWithoutStreamsInput>
   }
 
   export type UserUpdateOneWithoutStreamNestedInput = {
@@ -7136,14 +7144,6 @@ export namespace Prisma {
     delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutStreamInput, UserUpdateWithoutStreamInput>, UserUncheckedUpdateWithoutStreamInput>
-  }
-
-  export type CategoryUpdateOneRequiredWithoutStreamsNestedInput = {
-    create?: XOR<CategoryCreateWithoutStreamsInput, CategoryUncheckedCreateWithoutStreamsInput>
-    connectOrCreate?: CategoryCreateOrConnectWithoutStreamsInput
-    upsert?: CategoryUpsertWithoutStreamsInput
-    connect?: CategoryWhereUniqueInput
-    update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutStreamsInput, CategoryUpdateWithoutStreamsInput>, CategoryUncheckedUpdateWithoutStreamsInput>
   }
 
   export type StreamCreateNestedManyWithoutCategoryInput = {
@@ -7477,7 +7477,7 @@ export namespace Prisma {
   export type StreamCreateWithoutUserInput = {
     id?: string
     title: string
-    thumbnaliUrl?: string | null
+    thumbnailUrl?: string | null
     ingressId?: string | null
     serverUrl?: string | null
     streamKey?: string | null
@@ -7490,7 +7490,7 @@ export namespace Prisma {
   export type StreamUncheckedCreateWithoutUserInput = {
     id?: string
     title: string
-    thumbnaliUrl?: string | null
+    thumbnailUrl?: string | null
     ingressId?: string | null
     serverUrl?: string | null
     streamKey?: string | null
@@ -7548,7 +7548,7 @@ export namespace Prisma {
   export type StreamUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    thumbnaliUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
     ingressId?: NullableStringFieldUpdateOperationsInput | string | null
     serverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     streamKey?: NullableStringFieldUpdateOperationsInput | string | null
@@ -7561,7 +7561,7 @@ export namespace Prisma {
   export type StreamUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    thumbnaliUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
     ingressId?: NullableStringFieldUpdateOperationsInput | string | null
     serverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     streamKey?: NullableStringFieldUpdateOperationsInput | string | null
@@ -7569,6 +7569,31 @@ export namespace Prisma {
     categoryId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CategoryCreateWithoutStreamsInput = {
+    id?: string
+    title: string
+    slug: string
+    description?: string | null
+    thumbnailUrl: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CategoryUncheckedCreateWithoutStreamsInput = {
+    id?: string
+    title: string
+    slug: string
+    description?: string | null
+    thumbnailUrl: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CategoryCreateOrConnectWithoutStreamsInput = {
+    where: CategoryWhereUniqueInput
+    create: XOR<CategoryCreateWithoutStreamsInput, CategoryUncheckedCreateWithoutStreamsInput>
   }
 
   export type UserCreateWithoutStreamInput = {
@@ -7610,29 +7635,35 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutStreamInput, UserUncheckedCreateWithoutStreamInput>
   }
 
-  export type CategoryCreateWithoutStreamsInput = {
-    id?: string
-    title: string
-    slug: string
-    description?: string | null
-    thumbnailUrl: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type CategoryUncheckedCreateWithoutStreamsInput = {
-    id?: string
-    title: string
-    slug: string
-    description?: string | null
-    thumbnailUrl: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type CategoryCreateOrConnectWithoutStreamsInput = {
-    where: CategoryWhereUniqueInput
+  export type CategoryUpsertWithoutStreamsInput = {
+    update: XOR<CategoryUpdateWithoutStreamsInput, CategoryUncheckedUpdateWithoutStreamsInput>
     create: XOR<CategoryCreateWithoutStreamsInput, CategoryUncheckedCreateWithoutStreamsInput>
+    where?: CategoryWhereInput
+  }
+
+  export type CategoryUpdateToOneWithWhereWithoutStreamsInput = {
+    where?: CategoryWhereInput
+    data: XOR<CategoryUpdateWithoutStreamsInput, CategoryUncheckedUpdateWithoutStreamsInput>
+  }
+
+  export type CategoryUpdateWithoutStreamsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CategoryUncheckedUpdateWithoutStreamsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserUpsertWithoutStreamInput = {
@@ -7680,41 +7711,10 @@ export namespace Prisma {
     socialLinks?: SocialLinkUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type CategoryUpsertWithoutStreamsInput = {
-    update: XOR<CategoryUpdateWithoutStreamsInput, CategoryUncheckedUpdateWithoutStreamsInput>
-    create: XOR<CategoryCreateWithoutStreamsInput, CategoryUncheckedCreateWithoutStreamsInput>
-    where?: CategoryWhereInput
-  }
-
-  export type CategoryUpdateToOneWithWhereWithoutStreamsInput = {
-    where?: CategoryWhereInput
-    data: XOR<CategoryUpdateWithoutStreamsInput, CategoryUncheckedUpdateWithoutStreamsInput>
-  }
-
-  export type CategoryUpdateWithoutStreamsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    thumbnailUrl?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CategoryUncheckedUpdateWithoutStreamsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    thumbnailUrl?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type StreamCreateWithoutCategoryInput = {
     id?: string
     title: string
-    thumbnaliUrl?: string | null
+    thumbnailUrl?: string | null
     ingressId?: string | null
     serverUrl?: string | null
     streamKey?: string | null
@@ -7727,7 +7727,7 @@ export namespace Prisma {
   export type StreamUncheckedCreateWithoutCategoryInput = {
     id?: string
     title: string
-    thumbnaliUrl?: string | null
+    thumbnailUrl?: string | null
     ingressId?: string | null
     serverUrl?: string | null
     streamKey?: string | null
@@ -7769,13 +7769,13 @@ export namespace Prisma {
     NOT?: StreamScalarWhereInput | StreamScalarWhereInput[]
     id?: StringFilter<"Stream"> | string
     title?: StringFilter<"Stream"> | string
-    thumbnaliUrl?: StringNullableFilter<"Stream"> | string | null
+    thumbnailUrl?: StringNullableFilter<"Stream"> | string | null
     ingressId?: StringNullableFilter<"Stream"> | string | null
     serverUrl?: StringNullableFilter<"Stream"> | string | null
     streamKey?: StringNullableFilter<"Stream"> | string | null
     isLive?: BoolFilter<"Stream"> | boolean
-    userId?: StringFilter<"Stream"> | string
     categoryId?: StringFilter<"Stream"> | string
+    userId?: StringFilter<"Stream"> | string
     createdAt?: DateTimeFilter<"Stream"> | Date | string
     updatedAt?: DateTimeFilter<"Stream"> | Date | string
   }
@@ -7819,7 +7819,7 @@ export namespace Prisma {
   export type StreamCreateManyCategoryInput = {
     id?: string
     title: string
-    thumbnaliUrl?: string | null
+    thumbnailUrl?: string | null
     ingressId?: string | null
     serverUrl?: string | null
     streamKey?: string | null
@@ -7832,7 +7832,7 @@ export namespace Prisma {
   export type StreamUpdateWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    thumbnaliUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
     ingressId?: NullableStringFieldUpdateOperationsInput | string | null
     serverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     streamKey?: NullableStringFieldUpdateOperationsInput | string | null
@@ -7845,7 +7845,7 @@ export namespace Prisma {
   export type StreamUncheckedUpdateWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    thumbnaliUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
     ingressId?: NullableStringFieldUpdateOperationsInput | string | null
     serverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     streamKey?: NullableStringFieldUpdateOperationsInput | string | null
@@ -7858,7 +7858,7 @@ export namespace Prisma {
   export type StreamUncheckedUpdateManyWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    thumbnaliUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
     ingressId?: NullableStringFieldUpdateOperationsInput | string | null
     serverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     streamKey?: NullableStringFieldUpdateOperationsInput | string | null

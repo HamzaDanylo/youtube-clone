@@ -149,13 +149,13 @@ exports.Prisma.UserScalarFieldEnum = {
 exports.Prisma.StreamScalarFieldEnum = {
   id: 'id',
   title: 'title',
-  thumbnaliUrl: 'thumbnaliUrl',
+  thumbnailUrl: 'thumbnailUrl',
   ingressId: 'ingressId',
   serverUrl: 'serverUrl',
   streamKey: 'streamKey',
   isLive: 'isLive',
-  userId: 'userId',
   categoryId: 'categoryId',
+  userId: 'userId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

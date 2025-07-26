@@ -1,6 +1,8 @@
-import { PrismaService } from '@/src/core/prisma/prisma.service';
+// import { PrismaService } from '@/src/core/prisma/prisma.service';
+
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CategoryFiltersInput } from './inputs/category-filter.input';
+import { PrismaService } from '@/src/core/prisma/prisma.service';
 
 @Injectable()
 export class CategoryService {
@@ -16,6 +18,14 @@ export class CategoryService {
             skip: skip ?? 0,
             orderBy: {
                 createdAt: 'desc'
+            },
+            include: {
+                streams: {
+                    include: {
+                        user: true,
+                        category: true
+                    }
+                }
             } 
         })
 

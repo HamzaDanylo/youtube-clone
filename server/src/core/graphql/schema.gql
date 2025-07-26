@@ -7,6 +7,22 @@ type AuthModel {
   user: UserModel
 }
 
+input CategoryFiltersInput {
+  skip: Float
+  take: Float
+}
+
+type CategoryModel {
+  createdAt: DateTime!
+  description: String
+  id: ID!
+  slug: String!
+  streams: [StreamModel!]!
+  thumbnailUrl: String!
+  title: String!
+  updatedAt: DateTime!
+}
+
 input ChangePasswordInput {
   newPassword: String!
   oldPassword: String!
@@ -109,7 +125,9 @@ type Mutation {
 }
 
 type Query {
+  findAllCategories(data: CategoryFiltersInput!): [CategoryModel!]!
   findAllStreams(filters: FiltersInput!): [StreamModel!]!
+  findCategorieBySlug(slug: String!): CategoryModel!
   findCurrentSessionByUser: SessionModel!
   findProfile: UserModel!
   findRandomStreams: [StreamModel!]!
@@ -152,13 +170,15 @@ input SocialLinkOrderInput {
 }
 
 type StreamModel {
+  category: CategoryModel
+  categoryId: String
   createdAt: DateTime!
   id: ID!
   ingressId: String
   isLive: Boolean!
   serverUrl: String
   streamKey: String
-  thumbnaliUrl: String
+  thumbnailUrl: String
   title: String!
   updatedAt: DateTime!
   user: UserModel!

@@ -23,6 +23,7 @@ model SocialLink {
 
   @@map("social_links")
 }
+
 model User {
   id String @id @default(uuid())
 
@@ -37,11 +38,11 @@ model User {
   isTotpEnabled Boolean @default(false) @map("is_totp_enabled")
   totpSecret    String? @map("totp_secret")
 
-  isDeactivated   Boolean  @default(false) @map("is_deactivated")
-  deactivatedAt   DateTime? @map("deactivated_at") 
+  isDeactivated Boolean   @default(false) @map("is_deactivated")
+  deactivatedAt DateTime? @map("deactivated_at")
 
   socialLinks SocialLink[]
-  stream Stream?
+  stream      Stream?
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
@@ -52,8 +53,8 @@ model User {
 model Stream {
   id String @id @default(uuid())
 
-  title String 
-  thumbnaliUrl String? @map("thumbanail_url")
+  title        String
+  thumbnailUrl String? @map("thumbanail_url")
 
   ingressId String? @unique @map("ingress_id")
   serverUrl String? @map("server_url")
@@ -61,28 +62,28 @@ model Stream {
 
   isLive Boolean @default(false) @map("is_live")
 
-  user User? @relation(fields: [userId],references: [id], onDelete: Cascade)
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId String   @map("category_id")
+
+  user   User?  @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String @unique @map("user_id")
-
-  category Category @relation(fields: [categoryId],references: [id],onDelete: Cascade)
-  categoryId String @unique @map("category_id")
-
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 }
 
-model Category{
+model Category {
   id String @id @default(uuid())
 
-  title String 
-  slug String @unique
-  description String?
-  thumbnailUrl String @map("thumbnail_url")
+  title        String
+  slug         String  @unique
+  description  String?
+  thumbnailUrl String  @map("thumbnail_url")
 
   streams Stream[]
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+
   @@map("categories")
 }
