@@ -120,16 +120,6 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.SocialLinkScalarFieldEnum = {
-  id: 'id',
-  title: 'title',
-  url: 'url',
-  position: 'position',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
@@ -155,6 +145,28 @@ exports.Prisma.StreamScalarFieldEnum = {
   streamKey: 'streamKey',
   isLive: 'isLive',
   categoryId: 'categoryId',
+  isChatEnabled: 'isChatEnabled',
+  isChatFollowersOnly: 'isChatFollowersOnly',
+  isChatPremiumFollowersOnly: 'isChatPremiumFollowersOnly',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ChatMesssageScalarFieldEnum = {
+  id: 'id',
+  text: 'text',
+  userId: 'userId',
+  streamId: 'streamId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SocialLinkScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  url: 'url',
+  position: 'position',
   userId: 'userId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -187,9 +199,10 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  SocialLink: 'SocialLink',
   User: 'User',
   Stream: 'Stream',
+  ChatMesssage: 'ChatMesssage',
+  SocialLink: 'SocialLink',
   Category: 'Category'
 };
 

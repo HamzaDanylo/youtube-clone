@@ -8,21 +8,6 @@ datasource db {
   url      = env("POSTGRES_URI")
 }
 
-model SocialLink {
-  id String @id @default(uuid())
-
-  title    String
-  url      String
-  position Int
-
-  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId String? @map("user_id")
-
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-
-  @@map("social_links")
-}
 
 model User {
   id String @id @default(uuid())
@@ -43,6 +28,7 @@ model User {
 
   socialLinks SocialLink[]
   stream      Stream?
+  ChatMessages ChatMesssage[]
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
@@ -65,11 +51,48 @@ model Stream {
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId String   @map("category_id")
 
-  user   User?  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  chatMessages ChatMesssage[]
+  isChatEnabled Boolean @default(true) @map("is_chat_enabled")
+  isChatFollowersOnly Boolean @default(false) @map("is_chat_followers_only")
+  isChatPremiumFollowersOnly Boolean @default(false) @map("is_chat_premium  _followers_only")
+  
+
+  user   User  @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String @unique @map("user_id")
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+}
+
+model ChatMesssage {
+  id String @id @default(uuid())
+
+  text        String
+  
+  user User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String @map("user_id")
+
+  stream Stream @relation(fields: [streamId], references: [id], onDelete: Cascade)
+  streamId String @map("stream_id")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+}
+
+model SocialLink {
+  id String @id @default(uuid())
+
+  title    String
+  url      String
+  position Int
+
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String? @map("user_id")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("social_links")
 }
 
 model Category {
